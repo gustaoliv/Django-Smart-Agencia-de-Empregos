@@ -3,18 +3,18 @@ from django.db import models
 
 class Vacancy(models.Model):
     SALARY_CHOICES = (
-        ('ATÉ 1000', 'ATÉ 1000'),
-        ('DE 1000 A 2000', 'DE 1000 A 2000'),
-        ('DE 2000 A 3000', 'DE 2000 A 3000'),
-        ('ACIMA DE 3000', 'ACIMA DE 3000'),
+        ('Até 1000', 'ATÉ 1000'),
+        ('De 1000 a 2000', 'DE 1000 A 2000'),
+        ('De 2000 a 3000', 'DE 2000 A 3000'),
+        ('Acima de 3000', 'ACIMA DE 3000'),
     )
     SCHOOLING_CHOICES = (
-        ('ENSINO FUNDAMENTAL', 'ENSINO FUNDAMENTAL'),
-        ('ENSINO MÉDIO', 'ENSINO MÉDIO'),
-        ('TECNÓLOGO', 'TECNÓLOGO'),
-        ('ENSINO SUPERIOR', 'ENSINO SUPERIOR'),
-        ('PÓS/MBA/MESTRADO', 'PÓS/MBA/MESTRADO'),
-        ('DOUTORADO', 'DOUTORADO'),
+        ('Ensino Fundamental', 'ENSINO FUNDAMENTAL'),
+        ('Ensino Médio', 'ENSINO MÉDIO'),
+        ('Tecnólogo', 'TECNÓLOGO'),
+        ('Ensino Superior', 'ENSINO SUPERIOR'),
+        ('Pós/MBA/Mestrado', 'PÓS/MBA/MESTRADO'),
+        ('Doutorado', 'DOUTORADO'),
     )
 
     name = models.CharField('Nome da Vaga', max_length=200)
