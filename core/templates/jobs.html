@@ -84,6 +84,7 @@
                 </div>
             </div>
 
+            {% if page_obj.paginator.count != 0 %}
             <!-- START Pagination -->
             <center>
             <nav aria-label="Page navigation">
@@ -100,7 +101,8 @@
                 </span>
             </nav>
             </center>
-            
+            {% endif %}
+                        
 
             <!-- END Pagination -->
         </div>
