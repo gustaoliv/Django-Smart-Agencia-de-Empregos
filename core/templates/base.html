@@ -39,6 +39,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
 
+
+
 </head>
 
 
@@ -99,14 +101,14 @@
                                     </li>
                                     {% if request.user.is_authenticated  %}
                                         <li class="nav-item">
-                                            <a class="page-scroll" href="http://127.0.0.1:8000/admin/logout/">SAIR</a>
+                                            <a class="page-scroll" href="{% url 'logout' %}">SAIR</a>
                                         </li>
                                     {% else %}
                                         <li class="nav-item">
-                                            <a class="page-scroll" href="#">LOGIN</a>
+                                            <a class="page-scroll" href="{% url 'login' %}">LOGIN</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="page-scroll" href="#">CADASTRO</a>
+                                            <a class="page-scroll" href="{% url 'signup' %}">CADASTRO</a>
                                         </li>
                                     {% endif %}
                                 </ul>
@@ -157,6 +159,23 @@
 
     <!--====== Main js ======-->
     <script src="{% static 'js/main.js' %}"></script>
+
+
+    <!--===============================================================================================-->
+	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <!--===============================================================================================-->
+        <script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+    <!--===============================================================================================-->
+        <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+        <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!--===============================================================================================-->
+        <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+    <!--===============================================================================================-->
+        <script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+        <script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+    <!--===============================================================================================-->
+        <script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+    <!--===============================================================================================-->    
 
 </body>
 
