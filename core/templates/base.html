@@ -88,16 +88,16 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarEight">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item active">
-                                        <a class="page-scroll" href="#home">HOME</a>
+                                        <a class="page-scroll" href="{% url 'index' %}">HOME</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="page-scroll" href="#vagas">VAGAS</a>
+                                        <a class="page-scroll" href="{% url 'index' %}#vagas">VAGAS</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="page-scroll" href="#pricing">PREÇOS</a>
+                                        <a class="page-scroll" href="{% url 'index' %}#pricing">PREÇOS</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="page-scroll" href="#contact">CONTATO</a>
+                                        <a class="page-scroll" href="{% url 'index' %}#contact">CONTATO</a>
                                     </li>
                                     {% if request.user.is_authenticated  %}
                                         <li class="nav-item">

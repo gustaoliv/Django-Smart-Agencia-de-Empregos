@@ -11,5 +11,5 @@ class IndexView(ListView):
     
 
     def get_queryset(self):
-        vacancies = Vacancy.objects.order_by('-id')
+        vacancies = Vacancy.objects.filter(active=True).order_by('-id')
         return vacancies

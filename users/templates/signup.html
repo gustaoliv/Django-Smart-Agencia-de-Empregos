@@ -1,4 +1,6 @@
+{% extends 'base.html' %}
 {% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -29,10 +31,13 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	
+	<br><br><br>
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url({% static 'images/bg-01.jpg' %});">
+			<div class="container"><br><br><br></div>
+
 			<div class="wrap-login100">
+				
 				<form class="login100-form" id="signup-form" method="post" action="." autocomplete="off">
                     {% csrf_token %}
 					<span class="login100-form-title p-b-34 p-t-27">
@@ -104,7 +109,7 @@
 						</button>
 					</div>
 
-					<div class="text-center p-t-90">
+					<div class="text-center p-t-50">
 						<a class="txt1" href="{% url 'login' %}">
 							Já possui conta? Acessar conta.
 						</a>
@@ -117,3 +122,4 @@
 
 	<div id="dropDownSelect1"></div>
 	
+{% endblock %}

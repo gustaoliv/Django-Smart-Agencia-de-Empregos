@@ -1,4 +1,6 @@
+{% extends 'base.html' %}
 {% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -30,6 +32,7 @@
 </head>
 <body>
 	
+	<br><br><br>
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url({% static 'images/bg-01.jpg' %});">
 			<div class="wrap-login100">
@@ -75,7 +78,7 @@
 						</button>
 					</div>
 
-					<div class="text-center p-t-90">
+					<div class="text-center p-t-50">
 						<a class="txt1" href="{% url 'signup' %}">
 							Ainda não tem conta? Cadastre-se
 						</a>
@@ -88,3 +91,4 @@
 
 	<div id="dropDownSelect1"></div>
 	
+	{% endblock %}
