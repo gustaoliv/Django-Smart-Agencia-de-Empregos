@@ -78,6 +78,10 @@
 						</button>
 					</div>
 
+					{% if request.GET.next %}
+						<input type="hidden" name="next" value="{{request.GET.next}}"
+					{% endif %}
+
 					<div class="text-center p-t-50">
 						<a class="txt1" href="{% url 'signup' %}">
 							Ainda não tem conta? Cadastre-se

@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from .forms import CustomUserCreateForm
 from django.contrib.auth import authenticate, login
@@ -20,7 +21,11 @@ def signup_view(request):
             # password = form.cleaned_data.get('password1')
             # account = authenticate(email=email, password=password)
             login(request, user)
-            return redirect('index')
+
+            if 'next' in request.POST:
+                return redirect(request.POST['next'])
+            else:
+                return redirect('index')
         else:
             context['registration_form'] = form
 
@@ -29,3 +34,5 @@ def signup_view(request):
         context['registration_form'] = form
     
     return render(request, 'signup.html', context)
+
+

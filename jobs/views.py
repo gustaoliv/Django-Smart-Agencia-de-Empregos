@@ -23,7 +23,7 @@ def subscribe_vacancy(request, id_vacancy, template_name="subscribe_vacancy.html
                 register.vacancy = Vacancy.objects.get(id=id_vacancy)
                 register.save()
                 messages.success(request, 'Cadastrado na vaga com sucesso!')
-                return redirect('index')
+                redirect('index')
             else:
                 messages.error(request, 'Erro ao cadastrar.')
         else:
@@ -37,4 +37,4 @@ def subscribe_vacancy(request, id_vacancy, template_name="subscribe_vacancy.html
         return render(request, 'subscribe_vacancy.html', context)
     
     else:
-        return redirect('login')
+        return redirect('signup')

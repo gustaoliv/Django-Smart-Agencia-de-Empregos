@@ -35,11 +35,12 @@
                             </div>
                         </div>
                         <div class="job-right my-4 flex-shrink-0">
-                            {% if request.user.is_authenticated %}
+                            {% comment %} {% if request.user.is_authenticated %}
                             <a href="/vagas/{{v.id}}" class="btn d-block w-100 d-sm-inline-block btn-light">Candidatar-se</a>
                             {% else %}
                             <a href="{% url 'login' %}" class="btn d-block w-100 d-sm-inline-block btn-light">Candidatar-se</a>
-                            {% endif %}
+                            {% endif %} {% endcomment %}
+                            <a href="/vagas/{{v.id}}" class="btn d-block w-100 d-sm-inline-block btn-light">Candidatar-se</a>
                         </div>
                     </div>
                     {% comment %} Jobs Descrition/Requirements PopUp Modal {% endcomment %}

@@ -103,11 +103,17 @@
 								<p style="color: red;">{{error}}</p>
 					{% endfor %}  
 
+					{% if request.GET.next %}
+						<input type="hidden" name="next" value="{{request.GET.next}}"
+					{% endif %}
+
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" type="submit">
 							Criar Conta
 						</button>
 					</div>
+
+					
 
 					<div class="text-center p-t-50">
 						<a class="txt1" href="{% url 'login' %}">
