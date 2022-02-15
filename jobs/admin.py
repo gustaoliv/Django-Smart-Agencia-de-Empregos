@@ -20,13 +20,13 @@ class CandidateVacancyAdmin(admin.ModelAdmin):
     get_candidate_name.short_description = 'Candidato'
 
     def get_salary_range(self, obj):
-        return obj.vacancy.salary_range == obj.salary_expectation
+        return obj.salary_expectation <= obj.vacancy.salary_range  
     get_salary_range.boolean = True
     get_salary_range.short_description = 'Faixa Salarial'
 
 
     def get_schooling(self, obj):
-        return obj.vacancy.minimum_schooling == obj.last_schooling
+        return obj.last_schooling >= obj.vacancy.minimum_schooling
     get_schooling.boolean = True
     get_schooling.short_description = 'Escolaridade'
     

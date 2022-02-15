@@ -13,10 +13,10 @@
         <div class="job-content">
             <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
                 <li class="mr-md-4">
-                    <i class="zmdi zmdi-money mr-2"></i>{{vacancy.salary_range}}
+                    <i class="zmdi zmdi-money mr-2"></i>{{vacancy.get_salary_range_display}}
                 </li>
                 <li class="mr-md-4">
-                    <i class="zmdi zmdi-graduation-cap mr-2"></i>{{vacancy.minimum_schooling}}
+                    <i class="zmdi zmdi-graduation-cap mr-2"></i>{{vacancy.get_minimum_schooling_display}}
                 </li>
             </ul>
         </div>
@@ -62,13 +62,13 @@
                         <select name="salary_expectation" required="" id="id_salary_expectation">
                             <option value="">---------</option>
                           
-                            <option value="Até 1000">ATÉ 1000</option>
+                            <option value=1000>ATÉ 1000</option>
                           
-                            <option value="De 1000 a 2000">DE 1000 A 2000</option>
+                            <option value=2000>DE 1000 A 2000</option>
                           
-                            <option value="De 2000 a 3000">DE 2000 A 3000</option>
+                            <option value=3000>DE 2000 A 3000</option>
                           
-                            <option value="Acima de 3000">ACIMA DE 3000</option>
+                            <option value=9999>ACIMA DE 3000</option>
                           
                           </select>
                         {% comment %} <i class="lni-user"></i> {% endcomment %}
@@ -81,17 +81,17 @@
                         <select name="last_schooling" required="" id="id_last_schooling">
                             <option value="" selected="">---------</option>
                           
-                            <option value="Ensino Fundamental">ENSINO FUNDAMENTAL</option>
+                            <option value=1>ENSINO FUNDAMENTAL</option>
                           
-                            <option value="Ensino Médio">ENSINO MÉDIO</option>
+                            <option value=2>ENSINO MÉDIO</option>
                           
-                            <option value="Tecnólogo">TECNÓLOGO</option>
+                            <option value=3>TECNÓLOGO</option>
                           
-                            <option value="Ensino Superior">ENSINO SUPERIOR</option>
+                            <option value=4>ENSINO SUPERIOR</option>
                           
-                            <option value="Pós/MBA/Mestrado">PÓS/MBA/MESTRADO</option>
+                            <option value=5>PÓS/MBA/MESTRADO</option>
                           
-                            <option value="Doutorado">DOUTORADO</option>
+                            <option value=6>DOUTORADO</option>
                     
                           </select>
                         {% comment %} <i class="lni-user"></i> {% endcomment %}

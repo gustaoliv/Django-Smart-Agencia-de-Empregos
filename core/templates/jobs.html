@@ -26,10 +26,10 @@
                                 <h5 class="text-center text-md-left"><a href="#vaga{{v.name|slugify}}" data-toggle="modal">{{v.name|title}}</a></h5>
                                 <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
                                     <li class="mr-md-4">
-                                        <i class="zmdi zmdi-money mr-2"></i>{{v.salary_range}}
+                                        <i class="zmdi zmdi-money mr-2"></i>{{v.get_salary_range_display}}
                                     </li>
                                     <li class="mr-md-4">
-                                        <i class="zmdi zmdi-graduation-cap mr-2"></i>{{v.minimum_schooling}}
+                                        <i class="zmdi zmdi-graduation-cap mr-2"></i>{{v.get_minimum_schooling_display}}
                                     </li>
                                 </ul>
                             </div>
@@ -64,10 +64,10 @@
                                         <div class="job-content">
                                             <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
                                                 <li class="mr-md-4">
-                                                    <i class="zmdi zmdi-money mr-2"></i>{{v.salary_range}}
+                                                    <i class="zmdi zmdi-money mr-2"></i>{{v.get_salary_range_display}}
                                                 </li>
                                                 <li class="mr-md-4">
-                                                    <i class="zmdi zmdi-graduation-cap mr-2"></i>{{v.minimum_schooling}}
+                                                    <i class="zmdi zmdi-graduation-cap mr-2"></i>{{v.get_minimum_schooling_display}}
                                                 </li>
                                             </ul>
                                         </div>
