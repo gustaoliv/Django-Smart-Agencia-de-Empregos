@@ -99,27 +99,41 @@
 						<input class="input100" type="password" name="password2" id="id_password2" placeholder="Confirme sua senha">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
+
 					{% for error in registration_form.email.errors %}
 								<p style="color: red;">{{error}}</p>
 					{% endfor %}  
 
 					{% if request.GET.next %}
-						<input type="hidden" name="next" value="{{request.GET.next}}"
+						<div class="wrap-input100 validate-input" data-validate="{{registration_form.password2.label}}">
+							<input class="input100" type="hidden" name="next" id="next" value="{{request.GET.next}}">
+						</div>
+						
 					{% endif %}
-
+					
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" type="submit">
 							Criar Conta
 						</button>
 					</div>
 
-					
+					{% if request.GET.next %}
 
+					<div class="text-center p-t-50">
+						<a class="txt1" href="{% url 'login' %}?next={{request.GET.next}}">
+							Já possui conta? Acessar conta.
+						</a>
+					</div>
+					
+						<input type="hidden" name="next" id="next" value="{{request.GET.next}}"
+
+					{% else %}
 					<div class="text-center p-t-50">
 						<a class="txt1" href="{% url 'login' %}">
 							Já possui conta? Acessar conta.
 						</a>
 					</div>
+					{% endif %}
 				</form>
 			</div>
 		</div>

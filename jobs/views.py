@@ -4,8 +4,10 @@ from .models import CandidateVacancy, Vacancy
 from users.models import CustomUser
 from .forms import CandidateVacancyModelForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='/contas/login/')
 def subscribe_vacancy(request, id_vacancy, template_name="subscribe_vacancy.html"):
     vacancy = get_object_or_404(Vacancy, pk=id_vacancy)
     # #candidate = get_object_or_404(CustomUser, pk=id_candidate)
@@ -37,4 +39,4 @@ def subscribe_vacancy(request, id_vacancy, template_name="subscribe_vacancy.html
         return render(request, 'subscribe_vacancy.html', context)
     
     else:
-        return redirect('signup')
+        return redirect('login')

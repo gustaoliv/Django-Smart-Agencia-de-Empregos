@@ -8,7 +8,7 @@ def signup_view(request):
     context = {}
     if request.POST:
         form = CustomUserCreateForm(request.POST)
-
+        next = request.POST.get('next', '/')
         if form.is_valid():
             user = form.save()
             # user.set_password(user.password)
@@ -21,10 +21,16 @@ def signup_view(request):
             # password = form.cleaned_data.get('password1')
             # account = authenticate(email=email, password=password)
             login(request, user)
-
-            if 'next' in request.POST:
-                return redirect(request.POST['next'])
+            print('passou aqui')
+            print(request.POST)
+            print(request.META['HTTP_REFERER'])
+            print()
+            if request.POST.get('next', '/'):
+                next = request.POST.get('next', '/')
+                print(next)
+                return redirect(next)
             else:
+                
                 return redirect('index')
         else:
             context['registration_form'] = form

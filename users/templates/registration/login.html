@@ -79,14 +79,21 @@
 					</div>
 
 					{% if request.GET.next %}
-						<input type="hidden" name="next" value="{{request.GET.next}}"
-					{% endif %}
-
+						{% comment %} <input type="hidden" name="next" value="{{request.GET.next}}" {% endcomment %}
+					
+						<div class="text-center p-t-50">
+							<a class="txt1" href="{% url 'signup' %}?next={{request.GET.next}}">
+								Ainda não tem conta? Cadastre-se
+							</a>
+						</div>
+					{% else %}
 					<div class="text-center p-t-50">
 						<a class="txt1" href="{% url 'signup' %}">
 							Ainda não tem conta? Cadastre-se
 						</a>
 					</div>
+
+					{% endif %}
 				</form>
 			</div>
 		</div>
