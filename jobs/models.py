@@ -26,7 +26,9 @@ class Vacancy(models.Model):
     def __str__(self):
         return self.name
 
-
+    class Meta:
+        verbose_name = ('Vaga')
+        verbose_name_plural = ('Vagas')
 
 class CandidateVacancy(models.Model):
     vacancy = models.ForeignKey(Vacancy, verbose_name='Vaga', on_delete=models.CASCADE)
@@ -37,3 +39,8 @@ class CandidateVacancy(models.Model):
 
     def __str__(self):
         return f'{self.candidate.first_name} {self.candidate.last_name} - {self.vacancy.name}'
+
+
+    class Meta:
+        verbose_name = ('Candidato para Vaga')
+        verbose_name_plural = ('Candidatos para Vagas')
