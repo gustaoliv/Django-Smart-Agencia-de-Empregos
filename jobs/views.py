@@ -5,10 +5,11 @@ from users.models import CustomUser
 from .forms import CandidateVacancyModelForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.views.generic import TemplateView
 
 
 @login_required(login_url='/contas/login/')
-def subscribe_vacancy(request, id_vacancy, template_name="subscribe_vacancy.html"):
+def subscribe_vacancy(request, id_vacancy, template_name='subscribe_vacancy.html'):
     vacancy = get_object_or_404(Vacancy, pk=id_vacancy)
     # #candidate = get_object_or_404(CustomUser, pk=id_candidate)
 
@@ -29,8 +30,9 @@ def subscribe_vacancy(request, id_vacancy, template_name="subscribe_vacancy.html
             else:
                 messages.error(request, 'Erro ao cadastrar.')
         else:
+            if CandidateVacancy.objects.filter(candidate_id=request.user.id, vacancy_id=id_vacancy):
+                return redirect(f'ja_cadastrado/{id_vacancy}')
             form = CandidateVacancyModelForm()
-
         context = {
             'form': form,
             'vacancy': vacancy,
@@ -40,3 +42,13 @@ def subscribe_vacancy(request, id_vacancy, template_name="subscribe_vacancy.html
     
     else:
         return redirect('login')
+
+
+def already_registered(request, id_vacancy):
+    vacancy = get_object_or_404(Vacancy, pk=id_vacancy)
+    context = {
+            'vacancy': vacancy,
+    }
+    return render(request, 'already_registered.html', context)
+
+    

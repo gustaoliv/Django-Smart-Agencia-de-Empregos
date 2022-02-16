@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class"cointainer">
+    <br><br><br><br><br><br>
+    
+    <div class="container"> 
+        <div class="container-fluid p-0">
+            <div class="alert alert-warning alert-dismissible" role="alert" >
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="True">&times;</span>
+            </button>
+            Você já está cadastrado(a) nessa vaga!
+            </div>
+      </div>
+        <h4>
+            <strong>
+                {{vacancy.name|title}}
+            </strong>
+        </h4>
+        <br>
+        <div class="job-content">
+            <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
+                <li class="mr-md-4">
+                    <i class="zmdi zmdi-money mr-2"></i>{{vacancy.get_salary_range_display}}
+                </li>
+                <li class="mr-md-4">
+                    <i class="zmdi zmdi-graduation-cap mr-2"></i>{{vacancy.get_minimum_schooling_display}}
+                </li>
+            </ul>
+        </div>
+    
+        <br>
+        <justify>
+            <P><strong>Requisitos:</strong></p>
+            <p>{{vacancy.requirements}}</p>
+        </justify>
+
+        <br><br>
+        <center>
+        <div class="rounded-buttons mt-20">
+            <a href="{% url 'index' %}#vagas" class="main-btn rounded-three">Ver outra vagas</a>
+        </div> <!-- form input -->
+        </center>
+</div>
+
+{% endblock %}

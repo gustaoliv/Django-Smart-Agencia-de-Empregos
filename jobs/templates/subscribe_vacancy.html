@@ -55,14 +55,19 @@
         <div class="contact-form form-style-one mt-35 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.5s">
 
             {% if messages %}
-            <ul class="messages">
                 {% for message in messages %}
-                    <li {% if messsage.tags %} class="{{message.tags}}" {% endif %}> {{message}}</li>
+                    <div class="container-fluid p-0">
+                        <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="True">&times;</span>
+                        </button>
+                        {{ message }}
+                        </div>
+                  </div>
                 {% endfor %}
-            </ul>
             {% endif %}
 
-
+            
             <form  id="contact-form" method="post">
                 {% csrf_token %}
                 <div class="form-input mt-15">
@@ -141,6 +146,7 @@
                 </div> <!-- form input -->
             </form>
         </div> <!-- contact form -->
+
         <br><br><br>
     </div>
 
