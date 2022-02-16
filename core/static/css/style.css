@@ -2167,6 +2167,20 @@ p {
     position: relative;
     font-size: 16px;
     color: #6c6c6c; }
+  
+  .form-input .input-items input, .form-input .input-items select{
+    width: 100%;
+    height: 44px;
+    border: 2px solid #a4a4a4;
+    padding-left: 44px;
+    padding-right: 12px;
+    position: relative;
+    font-size: 16px;
+    color: #6c6c6c; 
+  }
+  .form-input .input-items input:focus, .form-input .input-items select:focus {
+    border-color: #38f9d7; }
+
     .form-input .input-items input:focus, .form-input .input-items textarea:focus {
       border-color: #38f9d7; }
     .form-input .input-items input::placeholder, .form-input .input-items textarea::placeholder {

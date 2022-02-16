@@ -41,6 +41,7 @@ A Smart é um site desenvolvido totalmente em Django para o backend, com utiliza
 :heavy_check_mark: Redirecionamento direto para página da vaga após Login ou Cadastro;\
 :heavy_check_mark: Sistema para pontuação de candidatos pelos requisitos;\
 :construction: Usuário próprio para Candidatos e Funcionários;\
+:construction: Página para usuários com suas vagas cadastradas;\
 :construction: Página de vaga para Administradores (filtrada por vagas e com número de candidatos);\
 :construction: Tela de Relatório (Charts js);\
 :construction: Publicar projeto no Heroku ou Google Cloud;

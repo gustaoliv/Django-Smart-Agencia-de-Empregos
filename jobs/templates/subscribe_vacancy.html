@@ -53,6 +53,16 @@
 
     
         <div class="contact-form form-style-one mt-35 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.5s">
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li {% if messsage.tags %} class="{{message.tags}}" {% endif %}> {{message}}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+
             <form  id="contact-form" method="post">
                 {% csrf_token %}
                 <div class="form-input mt-15">
@@ -60,7 +70,7 @@
                     <div class="input-items default">
 
                         <select name="salary_expectation" required="" id="id_salary_expectation">
-                            <option value="">---------</option>
+                            <option value=""> </option>
                           
                             <option value=1000>ATÉ 1000</option>
                           
@@ -72,14 +82,21 @@
                           
                           </select>
                         {% comment %} <i class="lni-user"></i> {% endcomment %}
+                        <i class="zmdi zmdi-money"></i>
                     </div>
+                    
                 </div> <!-- form input -->
-               
+                {% for error in form.salary_expectation.errors %}
+                    <p style="color: red;">{{error}}</p>
+                {% endfor %}
+
+
+
                 <div class="form-input mt-15">
                     <label>Escolaridade</label>
                     <div class="input-items default">
                         <select name="last_schooling" required="" id="id_last_schooling">
-                            <option value="" selected="">---------</option>
+                            <option value="" selected=""> </option>
                           
                             <option value=1>ENSINO FUNDAMENTAL</option>
                           
@@ -95,8 +112,15 @@
                     
                           </select>
                         {% comment %} <i class="lni-user"></i> {% endcomment %}
+                        <i class="zmdi zmdi-graduation-cap"></i>
                     </div>
                 </div> <!-- form input -->
+
+                {% for error in form.last_schooling.errors %}
+                    <p style="color: red;">{{error}}</p>
+                {% endfor %}
+
+
 
                 <div class="form-input mt-15">
                     <label>Experiência</label>
@@ -105,6 +129,12 @@
                         <i class="lni-pencil-alt"></i>
                     </div>
                 </div> <!-- form input -->
+
+                {% for error in form.experience.errors %}
+                    <p style="color: red;">{{error}}</p>
+                {% endfor %}
+
+
                 <p class="form-message"></p>
                 <div class="rounded-buttons mt-20">
                     <button type="submit" class="main-btn rounded-three">Cadastrar-se</button>
