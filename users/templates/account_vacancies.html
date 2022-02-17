@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+<br><br><br><br><br><br>
+
+<div class="container">
+
+    <div class="container-xl px-4 mt-4">
+         <!-- Account page navigation-->
+        <nav class="nav nav-borders">
+            <a class="nav-link ms-0" href="{% url 'minha-conta' %}" target="__blank">Informações</a>
+            <a class="nav-link active" href="{% url 'minhas-vagas' %}" target="__blank">Minhas Vagas</a>
+        </nav>
+        <hr class="mt-0 mb-4">
+
+        <br>
+
+
+        <!-- Billing history card-->
+        <div class="card mb-4">
+            <div class="card-header">Minhas vagas</div>
+            <div class="card-body p-0">
+                <!-- Billing history table-->
+                <div class="table-responsive table-billing-history">
+                    <table class="table mb-0">
+                        <thead>
+                            <tr>
+                                <th class="border-gray-200" scope="col">Vaga</th>
+                                <th class="border-gray-200" scope="col">Salário</th>
+                                <th class="border-gray-200" scope="col">Escolaridade</th>
+                                <th class="border-gray-200" scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for v in vacancies %}
+                            <tr>
+                                <td>{{v.name}}</td>
+                                <td>{{v.get_salary_range_display}}</td>
+                                <td>{{v.get_minimum_schooling_display}}</td>
+                                {% if v.active == True %}
+                                    <td><span class="badge bg-light text-dark">Em processo</span></td>
+                                {% else %}
+                                    <td><span class="badge bg-danger">Encerrada</span></td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

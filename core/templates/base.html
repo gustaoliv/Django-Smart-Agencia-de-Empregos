@@ -102,6 +102,9 @@
                                     </li>
                                     {% if request.user.is_authenticated  %}
                                         <li class="nav-item">
+                                            <a class="page-scroll" href="{% url 'minha-conta' %}">CONTA</a>
+                                        </li>
+                                        <li class="nav-item">
                                             <a class="page-scroll" href="{% url 'logout' %}">SAIR</a>
                                         </li>
                                     {% else %}

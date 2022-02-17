@@ -2,6 +2,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from .forms import CustomUserCreateForm
 from django.contrib.auth import authenticate, login
+from django.views.generic import TemplateView
+from jobs.models import CandidateVacancy, Vacancy
 
 
 def signup_view(request):
@@ -42,3 +44,24 @@ def signup_view(request):
     return render(request, 'signup.html', context)
 
 
+
+class AccountVacanciesView(TemplateView):
+    template_name = 'account_vacancies.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(TemplateView, self).get_context_data(**kwargs)
+        context['user'] = self.request.user
+        context['vacancies'] = Vacancy.objects.filter(id__in=CandidateVacancy.objects.filter(candidate_id=self.request.user.id).values('vacancy'))
+        
+        return context
+        
+        
+class AccountView(TemplateView):
+    template_name = 'account.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(TemplateView, self).get_context_data(**kwargs)
+        context['user'] = self.request.user
+        context['vacancies'] = Vacancy.objects.filter(id__in=CandidateVacancy.objects.filter(candidate_id=self.request.user.id).values('vacancy'))
+        
+        return context
