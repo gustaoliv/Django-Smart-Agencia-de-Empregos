@@ -15,12 +15,10 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
     
-    # cria usuário normal - Candidato Vaga
     def create_user(self, email, password=None, **extra_fields):
         extra_fields.setdefault('is_superuser', False)
         return self._create_user(email, password, **extra_fields)
 
-    #cria usuário para funcionários da empresa
     def create(self, email, password=None, **extra_fields):
         extra_fields.setdefault('is_superuser', False)
         extra_fields.setdefault('is_staff', True)
@@ -30,7 +28,6 @@ class UserManager(BaseUserManager):
 
         return self._create_user(email, password, **extra_fields)
 
-    #cria usuario administrador
     def create_superuser(self, email, password, **extra_fields):
         extra_fields.setdefault('is_superuser', True)
         extra_fields.setdefault('is_staff', True)
@@ -52,3 +49,14 @@ class CustomUser(AbstractUser):
         return self.email
 
     objects = UserManager()
+
+
+class Candidate(CustomUser):
+    pass
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        verbose_name = ("Candidato")
+        verbose_name_plural = ("Candidatos")

@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
-from .forms import CustomUserCreateForm, CustomUserChangeForm
+from .forms import CustomUserCreateForm, CustomUserChangeForm, CandidateCreateForm, CandidateChangeForm
 from django.contrib.auth import authenticate, login
 from django.views.generic import TemplateView, UpdateView
 from jobs.models import CandidateVacancy, Vacancy
@@ -10,7 +10,7 @@ from django.urls import reverse_lazy
 def signup_view(request):
     context = {}
     if request.POST:
-        form = CustomUserCreateForm(request.POST)
+        form = CandidateCreateForm(request.POST)
         next = request.POST.get('next', '/')
         if form.is_valid():
             user = form.save()
@@ -39,7 +39,7 @@ def signup_view(request):
             context['registration_form'] = form
 
     else:
-        form = CustomUserCreateForm()
+        form = CandidateCreateForm()
         context['registration_form'] = form
     
     return render(request, 'signup.html', context)
@@ -70,7 +70,7 @@ class AccountView(TemplateView):
 
 
 class AccountEditView(UpdateView):
-    form_class = CustomUserChangeForm
+    form_class = CandidateChangeForm
     template_name = 'account_edit.html'
     success_url = reverse_lazy('editar_conta')
 

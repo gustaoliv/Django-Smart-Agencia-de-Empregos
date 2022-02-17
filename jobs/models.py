@@ -21,7 +21,7 @@ SCHOOLING_CHOICES = (
 class Vacancy(models.Model):
     name = models.CharField('Nome da Vaga', max_length=200)
     salary_range = models.IntegerField('Faixa Salarial', choices=SALARY_CHOICES)
-    requirements = models.TextField('Requisitos', max_length=400)
+    requirements = models.TextField('Requisitos', max_length=1000)
     minimum_schooling = models.IntegerField('Escolaridade Mínima', choices=SCHOOLING_CHOICES)
     active = models.BooleanField('Vaga Disponivel?', default=True)
     def __str__(self):
