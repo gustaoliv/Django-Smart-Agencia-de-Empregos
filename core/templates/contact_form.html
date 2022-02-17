@@ -23,26 +23,40 @@
                 </div> <!-- contact two -->
             </div>
             <div class="col-lg-6">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="container-fluid p-0">
+                            <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="True">&times;</span>
+                            </button>
+                            {{ message }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
                 <div class="contact-form form-style-one mt-35 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.5s">
-                    <form  id="contact-form" action="assets/contact.php" method="post">
+                    <form  id="contact-form" method="post">
+                        {% csrf_token %}
+                        
                         <div class="form-input mt-15">
                             <label>Nome</label>
                             <div class="input-items default">
-                                <input type="text" placeholder="Nome" name="name">
+                                <input type="text" placeholder="Nome" name="nome" id="id_nome">
                                 <i class="lni-user"></i>
                             </div>
                         </div> <!-- form input -->
                         <div class="form-input mt-15">
                             <label>E-mail</label>
                             <div class="input-items default">
-                                <input type="email" placeholder="E-mail" name="email">
+                                <input type="email" placeholder="E-mail" name="email" id="id_email">
                                 <i class="lni-envelope"></i>
                             </div>
                         </div> <!-- form input -->
                         <div class="form-input mt-15">
                             <label>Mensagem</label>
                             <div class="input-items default">
-                                <textarea placeholder="Mensagem" name="massage"></textarea>
+                                <textarea placeholder="Mensagem" name="mensagem" id="id_mensagem"></textarea>
                                 <i class="lni-pencil-alt"></i>
                             </div>
                         </div> <!-- form input -->
