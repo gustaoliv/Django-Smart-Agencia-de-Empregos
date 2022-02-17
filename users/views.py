@@ -5,6 +5,10 @@ from django.contrib.auth import authenticate, login
 from django.views.generic import TemplateView, UpdateView
 from jobs.models import CandidateVacancy, Vacancy
 from django.urls import reverse_lazy
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib import messages
+
 
 
 def signup_view(request):
@@ -76,3 +80,11 @@ class AccountEditView(UpdateView):
 
     def get_object(self):
         return self.request.user
+
+
+
+class AccountChangePasswordView(PasswordChangeView):
+    form_class = PasswordChangeForm
+    success_url = reverse_lazy('alterar_senha')
+    success_message = 'Senha alterada com sucesso'
+    template_name = 'account_change_password.html'
