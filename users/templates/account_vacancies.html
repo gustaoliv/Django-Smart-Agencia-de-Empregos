@@ -9,8 +9,8 @@
     <div class="container-xl px-4 mt-4">
          <!-- Account page navigation-->
         <nav class="nav nav-borders">
-            <a class="nav-link ms-0" href="{% url 'minha-conta' %}">Informações</a>
-            <a class="nav-link active" href="{% url 'minhas-vagas' %}">Minhas Vagas</a>
+            <a class="nav-link ms-0" href="{% url 'editar_conta' %}">Informações</a>
+            <a class="nav-link active" href="{% url 'minhas_vagas' %}">Minhas Vagas</a>
         </nav>
         <hr class="mt-0 mb-4">
 
@@ -27,8 +27,8 @@
                         <thead>
                             <tr>
                                 <th class="border-gray-200" scope="col">Vaga</th>
-                                <th class="border-gray-200" scope="col">Salário</th>
-                                <th class="border-gray-200" scope="col">Escolaridade</th>
+                                <th class="border-gray-200" scope="col"><i class="zmdi zmdi-money mr-2"></i>Salário</th>
+                                <th class="border-gray-200" scope="col"><i class="zmdi zmdi-graduation-cap mr-2"></i>Escolaridade</th>
                                 <th class="border-gray-200" scope="col">Status</th>
                             </tr>
                         </thead>
@@ -41,7 +41,7 @@
                                 {% if v.active == True %}
                                     <td><span class="badge bg-light text-dark">Em processo</span></td>
                                 {% else %}
-                                    <td><span class="badge bg-danger">Encerrada</span></td>
+                                    <td><span class="badge bg-warning">Encerrada</span></td>
                                 {% endif %}
                             </tr>
                             {% endfor %}

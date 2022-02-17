@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block title %}Editar Perfil{% endblock %}
 {% block content %}
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
@@ -9,8 +10,8 @@
     <div class="container-xl px-4 mt-4">
          <!-- Account page navigation-->
         <nav class="nav nav-borders">
-            <a class="nav-link active" href="{% url 'minha-conta' %}">Informações</a>
-            <a class="nav-link ms-0" href="{% url 'minhas-vagas' %}">Minhas Vagas</a>
+            <a class="nav-link active" href="{% url 'editar_conta' %}">Informações</a>
+            <a class="nav-link ms-0" href="{% url 'minhas_vagas' %}">Minhas Vagas</a>
         </nav>
         <hr class="mt-0 mb-4">
 
@@ -36,26 +37,37 @@
                 <div class="card">
                     <div class="card-header">Account Details</div>
                     <div class="card-body">
-                        <form>
+
+                        {% comment %} <form method="post">
+                            {% csrf_token %}
+                            {{form.as_p}}
+                            <button class="btn btn-primary"> Atualizar</button>
+                        </form> {% endcomment %}
+
+
+
+
+                        <form method="post">
+                            {% csrf_token %}
                             <!-- Form Group (username)-->
                             <div class="mb-3">
-                                <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
-                                <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="username">
+                                <label class="small mb-1" for="inputEmailAddress">Email</label>
+                                <input class="form-control" id="id_email" name="email" type="email" placeholder="Digite o seu email" value="{{request.user.email}}">
                             </div>
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
                                 <!-- Form Group (first name)-->
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="inputFirstName">First name</label>
-                                    <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Valerie">
+                                    <label class="small mb-1" for="inputFirstName">Nome</label>
+                                    <input class="form-control" id="id_first_name" name="first_name" type="text" placeholder="Digite o seu primeiro nome" value="{{request.user.first_name}}">
                                 </div>
                                 <!-- Form Group (last name)-->
                                 <div class="col-md-6">
-                                    <label class="small mb-1" for="inputLastName">Last name</label>
-                                    <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Luna">
+                                    <label class="small mb-1" for="inputLastName">Sobrenome</label>
+                                    <input class="form-control" id="id_last_name" name="last_name" type="text" placeholder="Digite o seu sobrenome" value="{{request.user.last_name}}">
                                 </div>
                             </div>
-                            <!-- Form Row        -->
+                            {% comment %} <!-- Form Row        -->
                             <div class="row gx-3 mb-3">
                                 <!-- Form Group (organization name)-->
                                 <div class="col-md-6">
@@ -69,10 +81,7 @@
                                 </div>
                             </div>
                             <!-- Form Group (email address)-->
-                            <div class="mb-3">
-                                <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                                <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com">
-                            </div>
+                            
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
                                 <!-- Form Group (phone number)-->
@@ -85,9 +94,9 @@
                                     <label class="small mb-1" for="inputBirthday">Birthday</label>
                                     <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
                                 </div>
-                            </div>
+                            </div> {% endcomment %}
                             <!-- Save changes button-->
-                            <button class="btn btn-primary" type="button">Save changes</button>
+                            <button class="btn btn-primary" type="submit">Salvar alterações</button>
                         </form>
                     </div>
                 </div>

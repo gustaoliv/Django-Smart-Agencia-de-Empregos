@@ -1,9 +1,10 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
-from .forms import CustomUserCreateForm
+from .forms import CustomUserCreateForm, CustomUserChangeForm
 from django.contrib.auth import authenticate, login
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, UpdateView
 from jobs.models import CandidateVacancy, Vacancy
+from django.urls import reverse_lazy
 
 
 def signup_view(request):
@@ -65,3 +66,13 @@ class AccountView(TemplateView):
         context['vacancies'] = Vacancy.objects.filter(id__in=CandidateVacancy.objects.filter(candidate_id=self.request.user.id).values('vacancy'))
         
         return context
+
+
+
+class AccountEditView(UpdateView):
+    form_class = CustomUserChangeForm
+    template_name = 'account_edit.html'
+    success_url = reverse_lazy('editar_conta')
+
+    def get_object(self):
+        return self.request.user

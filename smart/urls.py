@@ -17,11 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from users.views import signup_view, AccountVacanciesView, AccountView, AccountEditView
+
 
 urlpatterns = [
     path('', include('core.urls')),
     path('admin/', admin.site.urls),
     path('contas/', include('users.urls')),
     path('vagas/', include('jobs.urls')),
+    path('conta/minhas_vagas/', AccountVacanciesView.as_view(), name="minhas_vagas"),
+    path('conta/editar_conta/', AccountEditView.as_view(), name="editar_conta"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
