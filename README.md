@@ -33,6 +33,9 @@
 
 A Smart é um site desenvolvido totalmente em Django para o backend, com utilização de HTML e CSS para o Front. A ideia do projeto era aplicar conhecimentos aprendidos durante cursos de Django e colocar na prática tudo que foi dito, colocando na prática com um projeto real utilizando **usuários customizados**, **login** e **cadastro** diretamente da página inicial para os usuários do site, listagem de modelos cadastrados pelos administradores, página individual com formulário de cadastros (registro do usuário em uma vaga de emprego).
 
+Projeto Publicado em: [Smart - Agência de empregos](http://35.222.239.242)
+
+
 ## :sparkles: Funcionalidades ##
 
 :heavy_check_mark: Formulário de Cadastro;\
