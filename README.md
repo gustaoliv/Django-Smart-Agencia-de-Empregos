@@ -75,8 +75,13 @@ $ /venv/Scripts/activate
 # Instalação das dependências
 $ pip install -r requirements.txt
 
+# Iniciando aplicação
+$ python manage.py runserver
+
+
 # O site vai inicializar em <http://localhost:8000>
 ```
+
 
 ## :memo: Licença ##
 
