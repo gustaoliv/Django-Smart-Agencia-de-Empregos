@@ -6,6 +6,7 @@ from .forms import CandidateVacancyModelForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
+from django.db.models import Count, Sum
 
 
 @login_required(login_url='/contas/login/')
@@ -52,3 +53,26 @@ def already_registered(request, id_vacancy):
     return render(request, 'already_registered.html', context)
 
     
+
+# @login_required(login_url='/contas/login/')
+class AdminVacanciesView(TemplateView):
+    
+    template_name = 'admin_vacancies.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(TemplateView, self).get_context_data(**kwargs)
+        context['vacancies'] =  Vacancy.objects.filter(active=True).order_by('-id').annotate(quant=Count('candidatevacancy'))
+        return context
+        
+
+class AdminCandidateVacancyView(TemplateView):
+    template_name = 'admin_candidate_vacancy.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(TemplateView, self).get_context_data(**kwargs)
+        id_vacancy = self.kwargs['pk']
+        print(id_vacancy)
+        context['candidates'] = CandidateVacancy.objects.filter(vacancy_id=int(id_vacancy))
+        context['vacancy'] = Vacancy.objects.get(id=int(id_vacancy))
+        print(Vacancy.objects.filter(id=int(id_vacancy)))
+        return context

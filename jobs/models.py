@@ -11,7 +11,7 @@ SALARY_CHOICES = (
 
 SCHOOLING_CHOICES = (
     (1, 'Ensino Fundamental'),
-    (2, 'Ensio Médio'),
+    (2, 'Ensino Médio'),
     (3, 'Tecnólogo'),
     (4, 'Ensino Superior'),
     (5, 'Pós/MBA/Mestrado'),
