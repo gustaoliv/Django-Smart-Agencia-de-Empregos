@@ -2,7 +2,7 @@
 {% block content %}
 
 <head>
-    <title>Smart - Minhas Vagas</title>
+    <title>Smart - Vagas Disponíveis</title>
 </head>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
@@ -22,6 +22,7 @@
                             <th class="border-gray-200" scope="col"><i class="zmdi zmdi-graduation-cap mr-2"></i>Escolaridade</th>
                             <th class="border-gray-200" scope="col">N° Inscritos</th>
                             <th class="border-gray-200" scope="col">Status</th>
+                            <th class="border-gray-200" scope="col">Editar</th>
                         </tr>
                     </thead>
 
@@ -37,7 +38,7 @@
                             {% else %}
                                 <td><span class="badge bg-warning">Encerrada</span></td>
                             {% endif %}
-                            <td>{{v.}}</td>
+                            <td><a href="/vagas/editar/{{v.id}}"><i class="zmdi zmdi-edit"></i></a></td>
                         </tr>
 
 

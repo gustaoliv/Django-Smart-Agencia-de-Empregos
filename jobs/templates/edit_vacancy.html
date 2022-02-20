@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+    <title>Smart - Editar Vaga</title>
+</head>
+
+<br><br><br><br><br><br>
+
+
+<div class="container">
+
+    <a href="{% url 'admin_vacancies' %}"><i class="zmdi zmdi-arrow-left"></i>  Ver todas as vagas</a>
+
+    <div class="container-xl px-4 mt-4">
+
+
+        <div class="row">
+                <!-- Account details card-->
+                <div class="card">
+                    <div class="card-header">Editar Vaga</div>
+                    <div class="card-body">
+
+                        <form method="post">
+                            {% csrf_token %}
+                            <!-- Form Group (username)-->
+                            <div class="mb-3">
+                                <label class="mb-1" for="inputEmailAddress">Nome da Vaga</label>
+                                <input class="form-control" id="id_name" name="name" type="text" placeholder="Digite o nome da vaga" value="{{form.name.value}}">
+                            </div>
+                            <!-- Form Row-->
+                            <div class="row gx-3 mb-3">
+                                <!-- Form Group (first name)-->
+                                <div class="col-md-6">
+                                    <label class="mb-1" for="inputFirstName">Faixa Salarial</label>
+                                    <select class="form-control" id="id_salary_range" name="salary_range" value="{{form.salary_range.value}}">
+                                            <option value="1000">Até 1000</option>
+                                            <option value="2000" selected="">De 1000 a 2000</option>
+                                            <option value="3000">De 2000 a 3000</option>
+                                            <option value="9999">Acima de 3000</option>
+                                    </select>
+                                </div>
+                                <!-- Form Group (last name)-->
+                                <div class="col-md-6">
+                                    <label class="mb-1" for="inputLastName">Escolaridade Mínima</label>
+                                    <select class="form-control" id="id_minimum_schooling" name="minimum_schooling"  value="{{form.minimum_schooling.value}}">
+                                            <option value="1">Ensino Fundamental</option>
+                                            <option value="2">Ensino Médio</option>
+                                            <option value="3">Tecnólogo</option>
+                                            <option value="4">Ensino Superior</option>
+                                            <option value="5">Pós/MBA/Mestrado</option>
+                                            <option value="6">Doutorado</option>                                          
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="mb-1" for="inputEmailAddress">Descrição da vaga</label>
+                                <textarea class="form-control" id="id_requirements" name="requirements" placeholder="Digite a descrição vaga">
+                                    {{form.requirements.value}}
+                                </textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="mb-1" for="id_active">Vaga Disponivel?</label>
+                                {% if form.active.value %}
+                                    <input type="checkbox" name="active" id="id_active"  checked="">
+                                {% else %}
+                                    <input type="checkbox" name="active" id="id_active">
+                                {% endif %}
+                                </textarea>
+                            </div>
+
+                            <button class="btn btn-primary" type="submit">Salvar alterações</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        <br><br>
+    </div>
+</div>
+
+{% endblock %}

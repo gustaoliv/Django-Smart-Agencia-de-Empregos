@@ -1,5 +1,6 @@
 from codecs import register_error
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse_lazy
 from .models import CandidateVacancy, Vacancy
 from users.models import CustomUser
 from .forms import CandidateVacancyModelForm
@@ -7,7 +8,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 from django.db.models import Count, Sum
-
+from django.views.generic.edit import UpdateView
 
 @login_required(login_url='/contas/login/')
 def subscribe_vacancy(request, id_vacancy, template_name='subscribe_vacancy.html'):
@@ -61,7 +62,7 @@ class AdminVacanciesView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(TemplateView, self).get_context_data(**kwargs)
-        context['vacancies'] =  Vacancy.objects.filter(active=True).order_by('-id').annotate(quant=Count('candidatevacancy'))
+        context['vacancies'] =  Vacancy.objects.filter().order_by('-id').annotate(quant=Count('candidatevacancy'))
         return context
         
 
@@ -76,3 +77,11 @@ class AdminCandidateVacancyView(TemplateView):
         context['vacancy'] = Vacancy.objects.get(id=int(id_vacancy))
         print(Vacancy.objects.filter(id=int(id_vacancy)))
         return context
+
+
+
+class VacancyUpdateView(UpdateView):
+    model = Vacancy
+    fields = ['name', 'salary_range', 'requirements', 'minimum_schooling', 'active']
+    template_name = 'edit_vacancy.html'
+    success_url = reverse_lazy('admin_vacancies') 
