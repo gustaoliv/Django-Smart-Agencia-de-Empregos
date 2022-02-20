@@ -34,7 +34,7 @@
                                 <!-- Form Group (first name)-->
                                 <div class="col-md-6">
                                     <label class="mb-1" for="inputFirstName">Faixa Salarial</label>
-                                    <select class="form-control" id="id_salary_range" name="salary_range" value="{{form.salary_range.value}}">
+                                    <select class="opcao form-control" id="id_salary_range" name="salary_range" value="{{form.salary_range.value}}">
                                             <option value="1000">Até 1000</option>
                                             <option value="2000" selected="">De 1000 a 2000</option>
                                             <option value="3000">De 2000 a 3000</option>
@@ -44,7 +44,7 @@
                                 <!-- Form Group (last name)-->
                                 <div class="col-md-6">
                                     <label class="mb-1" for="inputLastName">Escolaridade Mínima</label>
-                                    <select class="form-control" id="id_minimum_schooling" name="minimum_schooling"  value="{{form.minimum_schooling.value}}">
+                                    <select class="opcao form-control" id="id_minimum_schooling" name="minimum_schooling"  value="{{form.minimum_schooling.value}}">
                                             <option value="1">Ensino Fundamental</option>
                                             <option value="2">Ensino Médio</option>
                                             <option value="3">Tecnólogo</option>
@@ -57,9 +57,7 @@
 
                             <div class="mb-3">
                                 <label class="mb-1" for="inputEmailAddress">Descrição da vaga</label>
-                                <textarea class="form-control" id="id_requirements" name="requirements" placeholder="Digite a descrição vaga">
-                                    {{form.requirements.value}}
-                                </textarea>
+                                <textarea class="form-control" id="id_requirements" name="requirements" placeholder="Digite a descrição vaga">{{form.requirements.value}}</textarea>
                             </div>
 
                             <div class="mb-3">

@@ -10,8 +10,11 @@
 
 <div class="container-xl px-4 mt-4">
 
-    <a  href="{% url 'criar_vaga' %}"><button type="button" class="btn btn-success">Adicionar nova vaga</button></a>
-    <br><br>
+    <nav class="nav nav-borders">
+        <a class="nav-link active" href="{% url 'admin_vacancies' %}">Vagas disponíveis</a>
+        <a class="nav-link ms-0" href="{% url 'criar_vaga' %}">Adicionar Vaga</a>
+    </nav>
+    <hr class="mt-0 mb-4">
 
     <div class="card mb-4">
         <div class="card-header">Vagas disponíveis</div>
