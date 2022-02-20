@@ -9,6 +9,10 @@
 <br><br><br><br><br><br>
 
 <div class="container-xl px-4 mt-4">
+
+    <a  href="{% url 'criar_vaga' %}"><button type="button" class="btn btn-success">Adicionar nova vaga</button></a>
+    <br><br>
+
     <div class="card mb-4">
         <div class="card-header">Vagas disponíveis</div>
         <div class="card-body p-0">
@@ -44,20 +48,16 @@
                         </tr>
 
 
-
-
-
-
-                        
-
-
-
                         {% endfor %}
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
+    
+
+    <br><br>
 </div>	
 
 
