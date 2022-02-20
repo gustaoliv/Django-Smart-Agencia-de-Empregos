@@ -23,6 +23,7 @@
                             <th class="border-gray-200" scope="col">N° Inscritos</th>
                             <th class="border-gray-200" scope="col">Status</th>
                             <th class="border-gray-200" scope="col">Editar</th>
+                            <th class="border-gray-200" scope="col">Excluir</th>
                         </tr>
                     </thead>
 
@@ -38,7 +39,8 @@
                             {% else %}
                                 <td><span class="badge bg-warning">Encerrada</span></td>
                             {% endif %}
-                            <td><a href="/vagas/editar/{{v.id}}"><i class="zmdi zmdi-edit"></i></a></td>
+                            <td><a id="editar-vaga" href="/vagas/editar/{{v.id}}"><i class="zmdi zmdi-edit"></i></a></td>
+                            <td><a id="deletar-vaga" href="/vagas/excluir/{{v.id}}"><i class="zmdi zmdi-delete"></i></a></td>
                         </tr>
 
 

@@ -2632,3 +2632,10 @@ ul {
     margin-right: 1rem;
 }
 
+#deletar-vaga{
+  color: rgb(255, 42, 42);
+}
+
+#editar-vaga{
+  color: rgb(0, 218, 0);
+}
