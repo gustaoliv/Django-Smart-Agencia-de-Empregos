@@ -22,7 +22,6 @@ def subscribe_vacancy(request, id_vacancy, template_name='subscribe_vacancy.html
             form = CandidateVacancyModelForm(request.POST)
             print('\n\n\n',form, '\n\n\n') 
             if form.is_valid():
-                print('Formulário Válido')
                 register = form.save(commit=False)
                 register.candidate = request.user
                 register.vacancy = Vacancy.objects.get(id=id_vacancy)
@@ -72,10 +71,8 @@ class AdminCandidateVacancyView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(TemplateView, self).get_context_data(**kwargs)
         id_vacancy = self.kwargs['pk']
-        print(id_vacancy)
         context['candidates'] = CandidateVacancy.objects.filter(vacancy_id=int(id_vacancy))
         context['vacancy'] = Vacancy.objects.get(id=int(id_vacancy))
-        print(Vacancy.objects.filter(id=int(id_vacancy)))
         return context
 
 

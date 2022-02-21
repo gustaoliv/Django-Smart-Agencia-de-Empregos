@@ -54,6 +54,7 @@
                                     <th class="border-gray-200" scope="col"><i class="zmdi zmdi-money mr-2"></i>Salário Desejado</th>
                                     <th class="border-gray-200" scope="col"><i class="zmdi zmdi-graduation-cap mr-2"></i>Última Escolaridade</th>
                                     <th class="border-gray-200" scope="col"><i class="zmdi zmdi-graduation-cap mr-2"></i>Experiência</th>
+                                    <th class="border-gray-200" scope="col"><i class="zmdi zmdi-graduation-cap mr-2"></i>Pontuação</th>
 
                                 </tr>
                             </thead>
@@ -68,6 +69,14 @@
                                         <td><a href="#vaga{{c.id}}" data-toggle="modal">{{c.experience|slice:':10'}}...</a></td>
                                     {% else %}
                                         <td>{{c.experience}}</td>
+                                    {% endif %}
+
+                                    {% if c.last_schooling >= vacancy.minimum_schooling and c.salary_expectation == vacancy.salary_range %}
+                                        <td>2</td>
+                                    {% elif c.last_schooling >= vacancy.minimum_schooling or c.salary_expectation == vacancy.salary_range%}
+                                        <td>1</td>
+                                    {% else %}
+                                        <td>0</td>
                                     {% endif %}
                                 </tr>
         

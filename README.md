@@ -46,8 +46,10 @@ Projeto Publicado em: [Smart - Agência de empregos](http://35.222.239.242)
 :heavy_check_mark: Página para usuários com suas vagas cadastradas;\
 :heavy_check_mark: Usuário próprio para Candidatos e Funcionários;\
 :heavy_check_mark: Página de vaga para Administradores (filtrada por vagas e com número de candidatos);\
+:heavy_check_mark: Publicar projeto no Heroku ou Google Cloud;\
 :construction: Tela de Relatório (Charts js);\
-:heavy_check_mark: Publicar projeto no Heroku ou Google Cloud;
+:construction: Adicionar ordenaçaão tabela de candidatos e vagas;\
+:construction: Adicionar mensagens de erro tela de login e cadastro;\
 
 ## :rocket: Tecnologias ##
 
