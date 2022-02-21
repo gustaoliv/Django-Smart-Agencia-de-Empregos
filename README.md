@@ -40,6 +40,7 @@ Projeto Publicado em: [Smart - Agência de empregos](http://35.222.239.242)
 
 :heavy_check_mark: Formulário de Cadastro;\
 :heavy_check_mark: Formulário de Login;\
+:heavy_check_mark: Adicionar mensagens de erro tela de login e cadastro;\
 :heavy_check_mark: Inscrição do usuário em uma Vaga;\
 :heavy_check_mark: Redirecionamento direto para página da vaga após Login ou Cadastro;\
 :heavy_check_mark: Sistema para pontuação de candidatos pelos requisitos;\
@@ -49,7 +50,7 @@ Projeto Publicado em: [Smart - Agência de empregos](http://35.222.239.242)
 :heavy_check_mark: Publicar projeto no Heroku ou Google Cloud;\
 :construction: Tela de Relatório (Charts js);\
 :construction: Adicionar ordenaçaão tabela de candidatos e vagas;\
-:construction: Adicionar mensagens de erro tela de login e cadastro;\
+
 
 ## :rocket: Tecnologias ##
 

@@ -28,18 +28,15 @@ def signup_view(request):
             # password = form.cleaned_data.get('password1')
             # account = authenticate(email=email, password=password)
             login(request, user)
-            print('passou aqui')
-            print(request.POST)
-            print(request.META['HTTP_REFERER'])
-            print()
+            messages.success(request, 'Cadastro realizado com sucesso.')
             if request.POST.get('next', '/'):
                 next = request.POST.get('next', '/')
-                print(next)
                 return redirect(next)
             else:
                 
                 return redirect('index')
         else:
+            messages.error(request, 'Email ou senha inválidos.')
             context['registration_form'] = form
 
     else:

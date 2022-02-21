@@ -38,6 +38,21 @@
 			
 
 			<div class="wrap-login100">
+
+				{% if form.errors %}
+						<div class="container-fluid p-0">
+							<div class="alert alert-danger" role="alert" >
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="True">&times;</span>
+							</button>
+							{{ form.non_field_errors }}
+							</div>
+						</div>
+
+				{% endif %}
+
+
+
 				
 				<form class="login100-form" id="signup-form" method="post" action="." autocomplete="off">
                     {% csrf_token %}
@@ -45,22 +60,18 @@
 						Cadastrar uma conta
 					</span>
 
-					{% comment %} {% for field in registration_form %}
-						<p>
-							{{field.label_tag}}
-							{{field}}
-							
-							{% if field.help_text %}
-								<small style="color: white;">{{field.help_text}}</small>
-							{% endif %}
-
-							{% for error in field.errors %}
-								<p style="color: red;">{{error}}</p>
-							{% endfor %}
-						</p>
-
-					{% endfor %}  {% endcomment %}
-
+					{% if messages %}
+						{% for message in messages %}
+							<div class="container-fluid p-0">
+								<div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="True">&times;</span>
+								</button>
+								{{ message }}
+								</div>
+						</div>
+						{% endfor %}
+           			 {% endif %}
 
 					 <div class="wrap-input100 validate-input" data-validate = "{{registration_form.email.label}}">
 						<input class="input100" type="text" id="id_first_name" name="first_name" placeholder="Nome">

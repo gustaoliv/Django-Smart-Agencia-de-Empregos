@@ -37,40 +37,27 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url({% static 'images/bg-01.jpg' %});">
 			<div class="wrap-login100">
+
+
+				
+				{% if form.errors %}
+						<div class="container-fluid p-0">
+							<div class="alert alert-danger" role="alert" >
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="True">&times;</span>
+							</button>
+							{{ form.non_field_errors }}
+							</div>
+						</div>
+
+				{% endif %}
+
+
 				<form class="login100-form" method="post" autocomplete="off">
                     {% csrf_token %}
 					<span class="login100-form-title p-b-34 p-t-27">
 						Acessar sua conta
 					</span>
-
-					 {% comment %} {% for field in form %}
-						<p>
-							{{field.label_tag}}
-							{{field}}
-							
-							{% if field.help_text %}
-								<small style="color: white;">{{field.help_text}}</small>
-							{% endif %}
-
-							{% for error in field.errors %}
-								<p style="color: red;">{{error}}</p>
-							{% endfor %}
-						</p>
-
-					{% endfor %}   {% endcomment %}
-
-					{% if messages %}
-						{% for message in messages %}
-							<div class="container-fluid p-0">
-								<div class="alert {{ message.tags }} alert-dismissible" role="alert" >
-								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-									<span aria-hidden="True">&times;</span>
-								</button>
-								{{ message }}
-								</div>
-							</div>
-						{% endfor %}
-					{% endif %}
 
 
 
@@ -78,6 +65,7 @@
 						<input class="input100" type="username" id="email" name="username" placeholder="E-mail">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
+
 
 					<div class="wrap-input100 validate-input" data-validate="Coloque a sua senha">
 						<input class="input100" type="password" name="password" id="password" placeholder="Senha">
