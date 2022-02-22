@@ -10,6 +10,8 @@ from django.views.generic import TemplateView
 from django.db.models import Count, Sum
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.contrib.messages.views import SuccessMessageMixin
+import locale
+
 
 
 @login_required(login_url='/contas/login/')
@@ -102,3 +104,48 @@ class VacancyCreateView(SuccessMessageMixin, CreateView):
     success_message = "Vaga cadastrada com sucesso!"
 
     
+
+class AdminChartsView(TemplateView):
+    template_name = 'admin_charts.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(TemplateView, self).get_context_data(**kwargs)
+        vagas = Vacancy.objects.all().order_by('criado')
+        candidatos = CandidateVacancy.objects.all().order_by('criado')
+        vacancies = []
+        candidates = []
+        try:
+            locale.setlocale(locale.LC_ALL, 'pt_BR')
+        except:
+            locale.setlocale(locale.LC_ALL, 'Portuguese_Brazil')
+
+
+        for v in list(vagas):
+            vacancies.append(v.criado.strftime('%b/%y'))
+        
+        for c in list(candidatos):
+            candidates.append(c.criado.strftime('%b/%y'))
+
+        cont_vagas = {}
+        cont_candidatos= {}
+
+        for v in vacancies:
+            if v in cont_vagas:
+                cont_vagas[v] += 1
+            else:
+                cont_vagas[v] = 1
+
+        for c in candidates:
+            if c in cont_candidatos:
+                cont_candidatos[c] += 1
+            else:
+                cont_candidatos[c] = 1
+
+
+
+        context['vagas_labels'] = list(cont_vagas.keys())
+        context['vagas_values'] = list(cont_vagas.values())
+    
+        context['candidatos_labels'] = list(cont_candidatos.keys())
+        context['candidatos_values'] = list(cont_candidatos.values())
+        return context

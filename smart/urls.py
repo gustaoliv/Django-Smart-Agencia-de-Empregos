@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from users.views import signup_view, AccountVacanciesView, AccountView, AccountEditView, AccountChangePasswordView
-from jobs.views import AdminVacanciesView, AdminCandidateVacancyView
+from jobs.views import AdminVacanciesView, AdminCandidateVacancyView, AdminChartsView
 
 urlpatterns = [
     path('', include('core.urls')),
@@ -30,5 +30,6 @@ urlpatterns = [
     path('conta/alterar_senha/', AccountChangePasswordView.as_view(), name="alterar_senha"),
     path('administracao/', AdminVacanciesView.as_view(), name="admin_vacancies"),
     path('administracao/vaga/<int:pk>', AdminCandidateVacancyView.as_view(), name="admin_candidate_vacancy"),
+    path('administracao/graficos/', AdminChartsView.as_view(), name="admin_charts"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

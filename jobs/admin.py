@@ -4,7 +4,7 @@ from .models import Vacancy, CandidateVacancy
 
 @admin.register(Vacancy)
 class VacancyAdmin(admin.ModelAdmin):
-    list_display = ('name', 'salary_range', 'minimum_schooling', 'active')
+    list_display = ('name', 'salary_range', 'minimum_schooling', 'active', 'criado')
 
 
 @admin.register(CandidateVacancy)

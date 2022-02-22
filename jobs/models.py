@@ -18,7 +18,17 @@ SCHOOLING_CHOICES = (
     (6, 'Doutorado'),
 )
 
-class Vacancy(models.Model):
+
+class Base(models.Model):
+    criado = models.DateField('Data de Criação', auto_now_add=True, blank=True)
+    modificado = models.DateField('Data de atualização', auto_now = True, blank=True)
+    ativo = models.BooleanField('Ativo?', default=True)
+
+    class Meta:
+        abstract = True
+
+
+class Vacancy(Base):
     name = models.CharField('Nome da Vaga', max_length=200)
     salary_range = models.IntegerField('Faixa Salarial', choices=SALARY_CHOICES)
     requirements = models.TextField('Requisitos', max_length=1000)
@@ -31,7 +41,8 @@ class Vacancy(models.Model):
         verbose_name = ('Vaga')
         verbose_name_plural = ('Vagas')
 
-class CandidateVacancy(models.Model):
+
+class CandidateVacancy(Base):
     vacancy = models.ForeignKey(Vacancy, verbose_name='Vaga', on_delete=models.CASCADE)
     candidate = models.ForeignKey(get_user_model(), verbose_name='Candidato', on_delete=models.CASCADE)
     salary_expectation = models.IntegerField(default='Pretensão Salarial', choices=SALARY_CHOICES)

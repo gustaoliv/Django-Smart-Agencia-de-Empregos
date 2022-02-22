@@ -48,8 +48,8 @@ Projeto Publicado em: [Smart - Agência de empregos](http://35.222.239.242)
 :heavy_check_mark: Usuário próprio para Candidatos e Funcionários;\
 :heavy_check_mark: Página de vaga para Administradores (filtrada por vagas e com número de candidatos);\
 :heavy_check_mark: Publicar projeto no Heroku ou Google Cloud;\
-:construction: Tela de Relatório (Charts js);\
-:construction: Adicionar ordenaçaão tabela de candidatos e vagas;\
+:heavy_check_mark: Tela de Relatório (Charts js);\
+:construction: Adicionar ordenaçaão tabela de candidatos e vagas;
 
 
 ## :rocket: Tecnologias ##
@@ -67,7 +67,7 @@ Antes de começar :checkered_flag:, você precisa ter o [Django](https://www.dja
 
 ```bash
 # Clone este repositório
-$ git clone https://github.com/gustaoliv/Smart-Agencia-de-Empregos.git
+$ git clone https://github.com/gustaoliv/Django-Smart-Agencia-de-Empregos.git
 
 # Entre na pasta
 $ cd Smart-Agencia-de-Empregos
