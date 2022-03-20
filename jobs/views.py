@@ -11,7 +11,7 @@ from django.db.models import Count, Sum
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.contrib.messages.views import SuccessMessageMixin
 import locale
-
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 
 @login_required(login_url='/contas/login/')
@@ -59,8 +59,9 @@ def already_registered(request, id_vacancy):
     
 
 # @login_required(login_url='/contas/login/')
-class AdminVacanciesView(TemplateView):
-    
+class AdminVacanciesView(LoginRequiredMixin, PermissionRequiredMixin, TemplateView):
+    login_url = '/contas/login/'
+    permission_required = 'is_staff'
     template_name = 'admin_vacancies.html'
 
     def get_context_data(self, **kwargs):
@@ -69,9 +70,10 @@ class AdminVacanciesView(TemplateView):
         return context
         
 
-class AdminCandidateVacancyView(TemplateView):
+class AdminCandidateVacancyView(LoginRequiredMixin, PermissionRequiredMixin, TemplateView):
     template_name = 'admin_candidate_vacancy.html'
-
+    login_url = '/contas/login/'
+    permission_required = 'is_staff'
     def get_context_data(self, **kwargs):
         context = super(TemplateView, self).get_context_data(**kwargs)
         id_vacancy = self.kwargs['pk']
@@ -81,7 +83,9 @@ class AdminCandidateVacancyView(TemplateView):
 
 
 
-class VacancyUpdateView(SuccessMessageMixin, UpdateView):
+class VacancyUpdateView(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
+    login_url = '/contas/login/'
+    permission_required = 'is_staff'
     model = Vacancy
     fields = ['name', 'salary_range', 'requirements', 'minimum_schooling', 'active']
     template_name = 'edit_vacancy.html'
@@ -89,14 +93,18 @@ class VacancyUpdateView(SuccessMessageMixin, UpdateView):
 
 
 
-class VacancyDeleteView(DeleteView):
+class VacancyDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
+    login_url = '/contas/login/'
+    permission_required = 'is_staff'
     model = Vacancy
     template_name = 'delete_vacancy.html'
     success_url = reverse_lazy('admin_vacancies') 
 
 
 
-class VacancyCreateView(SuccessMessageMixin, CreateView):
+class VacancyCreateView(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, CreateView):
+    login_url = '/contas/login/'
+    permission_required = 'is_staff'
     model = Vacancy
     fields = ['name', 'salary_range', 'requirements', 'minimum_schooling', 'active']
     template_name = 'create_vacancy.html'
@@ -105,7 +113,9 @@ class VacancyCreateView(SuccessMessageMixin, CreateView):
 
     
 
-class AdminChartsView(TemplateView):
+class AdminChartsView(LoginRequiredMixin, PermissionRequiredMixin, TemplateView):
+    login_url = '/contas/login/'
+    permission_required = 'is_staff'
     template_name = 'admin_charts.html'
 
     def get_context_data(self, **kwargs):
