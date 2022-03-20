@@ -13,7 +13,7 @@
 <!-- Status -->
 
  <h4 align="center"> 
-	🚧 Em construção... 🚧
+	🌐 Projeto Concluído 🌐
 </h4> 
 
 <hr>
@@ -49,7 +49,6 @@ Projeto Publicado em: [Smart - Agência de empregos](http://smart.sistemifica.co
 :heavy_check_mark: Página de vaga para Administradores (filtrada por vagas e com número de candidatos);\
 :heavy_check_mark: Publicar projeto no Heroku ou Google Cloud;\
 :heavy_check_mark: Tela de Relatório (Charts js);\
-:construction: Adicionar ordenaçaão tabela de candidatos e vagas;
 
 
 ## :rocket: Tecnologias ##
@@ -80,6 +79,13 @@ $ /venv/Scripts/activate
 
 # Instalação das dependências
 $ pip install -r requirements.txt
+
+#Crie um arquivo com o nome '.env' com o conteúdo:
+SECRET_KEY=COLOQUE_AQUI_UMA_SECRET_KEY
+DEBUG=True
+
+#Inicializando o banco de dados
+$ python manage.py migrate
 
 # Iniciando aplicação
 $ python manage.py runserver
